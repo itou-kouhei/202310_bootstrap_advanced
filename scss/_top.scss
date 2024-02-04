@@ -44,13 +44,32 @@
       color: $white;
     }
 
-// 閉じている時のアイコン
+    // 閉じている時のアイコン
     &::after {
-        background: none; //開いているときの元のアイコンを消す
-        //閉じているときの新しいアイコン
-        content: '\F282'; 
-        font-family: bootstrap-icons !important;
-        font-size: 1.25rem;
+      background: none; //開いているときの元のアイコンを消す
+      //閉じているときの新しいアイコン
+      content: "\F282";
+      font-family: bootstrap-icons !important;
+      font-size: 1.25rem;
     }
   }
+}
+
+//  カードの内容
+.author {
+  //アイコンのサイズ
+  &-sns {
+    i {
+      font-size: 1.2rem;
+    }
+  }
+
+  //カード4の調整
+  &-card {
+    height: 100%;
+  }
+}
+
+html {
+    scroll-padding-top: 80px;
 }
