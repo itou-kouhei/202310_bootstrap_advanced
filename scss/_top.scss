@@ -1,0 +1,56 @@
+@use "./override" as *;
+
+.showcase {
+  background: url(../img/space_mountain.jpg) no-repeat center bottom;
+  background-size: cover;
+  position: relative;
+  isolation: isolate; //beforeのz-index: -1;でこの親よりも一番裏に回ってしまっているのでisolation: isolate;でこの親をHTMLの重ね順のルールから外してあげてbeforeを背景画像の上にする。
+  padding-top: 120px; //headerと被っていてheaderの裏に食い込んでいるので、これでheaderの高さまで下げる。
+
+  &::before {
+    content: "";
+    position: absolute; //absoluteをかけたので、beforeの要素はどこかを基準に自分の位置をきめる、基準は.showcaseにしたいので.showcaseにposition: relative;をかける。これで親子関係をつくる。これでbeforeは.showcaseの中で自分の位置をきめる。
+
+    // width: 100%; //これで.showcaseと同じ大きさになる。
+    // height: 100%; //これで.showcaseと同じ大きさになる。
+    // top: 0; //これで左上か始まって幅高さが100％で同じ大きさになる
+    // left: 0; //これで左上か始まって幅高さが100％で同じ大きさになる
+    inset: 0; //これは上の４つの設定と同じでこれで完結できる。top,left,right,bottomを0
+
+    background-color: rgba($primary, 0.5);
+    z-index: -1; //これはabsoluteのせいで一番上に浮いていてメインビジュアルの箱全体に被っていてボタンなどが押せないので一番裏に回す。
+  }
+
+  &-cover {
+    max-width: 300px;
+  }
+
+  //downはmax-widthの方　upはmin-width
+  @include media-breakpoint-down(md) {
+    //テキストタイトルの大きさを小さくする
+    &-title {
+      font-size: 2.3rem;
+    }
+  }
+} //.showcase
+
+//本の内容
+.about {
+  .caccordion-button {
+    // 見出しの色
+    // .accordion-button:not(.collapsed)
+    &:not(.collapsed) {
+      background: $primary;
+      color: $white;
+    }
+
+// 閉じている時のアイコン
+    &::after {
+        background: none; //開いているときの元のアイコンを消す
+        //閉じているときの新しいアイコン
+        content: '\F282'; 
+        font-family: bootstrap-icons !important;
+        font-size: 1.25rem;
+    }
+  }
+}

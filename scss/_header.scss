@@ -1,0 +1,23 @@
+@use './override' as *;
+
+// ヘッダーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+.sk-header {
+    &-nav {
+        box-shadow: 0 2px 8px $primary;
+        background-color: rgba($white, 0.9);
+    } 
+    &-logo {
+        width: 50px;
+        height: auto;
+    }
+    .navbar-brand {
+        text-transform: uppercase; //文字を全て大文字化
+    }
+    // ナビゲーションの項目
+    .nav-item {
+        font-size: 1.4rem; //文字を少し大きく(16px × 1.4)
+        padding: 0 0.7rem; //項目間の余白
+    }
+}
+
+// メインビジュアルーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
